@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// 트윗 테이블
+model Tweet {
+  id      Int      @id @default(autoincrement())
+  url     String
+  posted  DateTime
+  content String
+  likes   Int
+  // User 테이블의 ID를 사용함
+  user    User     @relation(fields: [userId], references: [id])
+  userId  Int
+}
+
+// 유저 테이블
+model User {
+  id     Int     @id @default(autoincrement())
+  email  String  @unique
+  handle String  @unique
+  name   String
+  avatar String
+  about  String
+  tweets Tweet[]
+  liked  Liked[]
+}
+
+// 좋아요 테이블
+model Liked {
+  id      Int  @id @default(autoincrement())
+  tweetId Int  @unique
+  // User 테이블의 ID를 사용함
+  user    User @relation(fields: [userId], references: [id])
+  userId  Int
+}
+
