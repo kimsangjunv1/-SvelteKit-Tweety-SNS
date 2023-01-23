@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
 	// import type { ErrorLoad } from '@sveltejs/kit'
 	import { page } from '$app/stores'
+	import '$root/styles/global.css'
 
 	// export const load: ErrorLoad = async ({
 	// 	error,
