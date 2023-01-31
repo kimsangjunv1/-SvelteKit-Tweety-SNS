@@ -3,7 +3,8 @@
 	import '$root/styles/global.css'
 </script>
 
-<!-- <a href="/">home</a>
-<a href="/about">about</a> -->
+<a href="/">home</a>
+<a href="/about">about</a>
+<a href="/api">api</a>
 
 <slot />
